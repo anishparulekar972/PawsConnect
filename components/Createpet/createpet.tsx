@@ -9,12 +9,14 @@ export default function CreatePetProfiles() {
   const [petName, setPetName] = useState('');
   const [petType, setPetType] = useState('');
   const [petBreed, setPetBreed] = useState('');
+  const [petAge, setPetAge] = useState('');
+  const [petColor, setPetColor] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFailure, setShowFailure] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleAddPetProfile = async () => {
-    if (!petName || !petType || !petBreed) {
+    if (!petName || !petType || !petBreed || !petAge || !petColor) {
         setErrorMessage('Please fill out all fields.');
         setShowFailure(true);
         return;
@@ -25,12 +27,16 @@ export default function CreatePetProfiles() {
           petName: petName,
           petType: petType,
           petBreed: petBreed,
+          petAge: petAge,
+          petColor: petColor
         });
         if (response.status === 200) {
           setShowSuccess(true);
           setPetName('');
           setPetType('');
           setPetBreed('');
+          setPetAge('');
+          setPetColor('');
         }
       } catch (error) {
         console.log(error);
@@ -104,6 +110,34 @@ export default function CreatePetProfiles() {
                 style={{ borderColor: '#ccc' }}
               />
             </div>
+
+            <div style={{ marginBottom: '1rem' }}>
+              <Input
+                value={petAge}
+                onChange={(event) => setPetAge(event.target.value)}
+                placeholder="Pet Age"
+                required
+                size="lg"
+                style={{ borderColor: '#ccc' }}
+              />
+            </div>
+
+            <div style={{ marginBottom: '1rem' }}>
+              <Input
+                value={petColor}
+                onChange={(event) => setPetColor(event.target.value)}
+                placeholder="Pet Color"
+                required
+                size="lg"
+                style={{ borderColor: '#ccc' }}
+              />
+            </div>
+
+
+
+
+
+
             <Button
               type="button"
               onClick={handleAddPetProfile}
