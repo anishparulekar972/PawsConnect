@@ -7,6 +7,8 @@ interface PetData {
     petName: string;
     petType: string;
     petBreed: string;
+    petAge: string;
+    petColor: string;
 }
 
 export default function PetProfile() {
@@ -69,6 +71,8 @@ export default function PetProfile() {
                     <p>Pet Name: {petData.pet_name}</p>
                     <p>Pet Type: {petData.pet_type}</p>
                     <p>Pet Breed: {petData.pet_breed}</p>
+                    <p>Pet Age: {petData.pet_age} years</p>
+                    <p>Pet Color: {petData.pet_color}</p>
                 </div>
             )}
         </Paper>
