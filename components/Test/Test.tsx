@@ -13,6 +13,7 @@ export default function RegisterPage() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFailure, setShowFailure] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [preferredLanguage, setPreferredLanguage] = useState('');
 
   const handleRegister = async () => {
     if (!name || !username || !email || !password) {
@@ -39,6 +40,7 @@ export default function RegisterPage() {
         username: username,
         email: email,
         password: password,
+        preferredLanguage: preferredLanguage,
       });
       if (response.status === 200) {
         setShowSuccess(true);
@@ -118,6 +120,16 @@ export default function RegisterPage() {
                 onChange={(event) => setPassword(event.target.value)}
                 type="password"
                 placeholder="Password"
+                required
+                size="lg"
+                style={{ borderColor: '#ccc' }}
+              />
+            </div>
+            <div style={{ marginBottom: '1rem' }}>
+              <Input
+                value={preferredLanguage}
+                onChange={(event) => setPreferredLanguage(event.target.value)}
+                placeholder="Preferred Language"
                 required
                 size="lg"
                 style={{ borderColor: '#ccc' }}
